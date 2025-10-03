@@ -1,66 +1,84 @@
-# Open Lovable
+# Pludo Coder
 
-Chat with AI to build React apps instantly. An example app made by the [Firecrawl](https://firecrawl.dev/?ref=open-lovable-github) team. For a complete cloud solution, check out [Lovable.dev](https://lovable.dev/) ❤️.
+AI-powered website generation with instant Vercel deployment. A streamlined code generation tool powered by Gemini 2.0 Flash.
 
-<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExODAwZGJzcDVmZGYxc3MyNDUycTliYnAwem1qbzhtNHh0c2JrNDdmZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMYzMkNmOecj3yFw81/giphy.gif" alt="Open Lovable Demo" width="100%"/>
+## Features
+
+- **AI-Powered Generation**: Uses Google's Gemini 2.0 Flash for fast, intelligent code generation
+- **Instant Deployment**: Automatically deploys to Vercel for immediate preview
+- **Clean UI**: Modern, responsive interface with real-time code display
+- **No Server Configuration**: Users provide their own API keys through the UI
+- **Production Ready**: Generates clean, modern HTML/CSS/JavaScript
 
 ## Setup
 
 1. **Clone & Install**
 ```bash
-git clone https://github.com/firecrawl/open-lovable.git
-cd open-lovable
-pnpm install  # or npm install / yarn install
+git clone <your-repo-url>
+cd pludo-coder
+npm install
 ```
 
-2. **Add `.env.local`**
-
-```env
-# =================================================================
-# REQUIRED
-# =================================================================
-FIRECRAWL_API_KEY=your_firecrawl_api_key    # https://firecrawl.dev
-
-# =================================================================
-# AI PROVIDER - Choose your LLM
-# =================================================================
-ANTHROPIC_API_KEY=your_anthropic_api_key  # https://console.anthropic.com
-OPENAI_API_KEY=your_openai_api_key        # https://platform.openai.com
-GEMINI_API_KEY=your_gemini_api_key        # https://aistudio.google.com/app/apikey
-GROQ_API_KEY=your_groq_api_key            # https://console.groq.com
-
-# =================================================================
-# FAST APPLY (Optional - for faster edits)
-# =================================================================
-MORPH_API_KEY=your_morphllm_api_key    # https://morphllm.com/dashboard
-
-# =================================================================
-# SANDBOX PROVIDER - Choose ONE: Vercel (default) or E2B
-# =================================================================
-SANDBOX_PROVIDER=vercel  # or 'e2b'
-
-# Option 1: Vercel Sandbox (default)
-# Choose one authentication method:
-
-# Method A: OIDC Token (recommended for development)
-# Run `vercel link` then `vercel env pull` to get VERCEL_OIDC_TOKEN automatically
-VERCEL_OIDC_TOKEN=auto_generated_by_vercel_env_pull
-
-# Method B: Personal Access Token (for production or when OIDC unavailable)
-# VERCEL_TEAM_ID=team_xxxxxxxxx      # Your Vercel team ID 
-# VERCEL_PROJECT_ID=prj_xxxxxxxxx    # Your Vercel project ID
-# VERCEL_TOKEN=vercel_xxxxxxxxxxxx   # Personal access token from Vercel dashboard
-
-# Option 2: E2B Sandbox
-# E2B_API_KEY=your_e2b_api_key      # https://e2b.dev
-```
-
-3. **Run**
+2. **Run Development Server**
 ```bash
-pnpm dev  # or npm run dev / yarn dev
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+3. **Open Application**
+Navigate to [http://localhost:3000](http://localhost:3000)
+
+## User Configuration
+
+When users first open the application, they will be prompted to provide:
+
+1. **Gemini 2.0 Flash API Key**
+   - Get your key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - Free tier available
+
+2. **Vercel API Token**
+   - Get your token from [Vercel Account Settings](https://vercel.com/account/tokens)
+   - Required for deployment
+
+API keys are stored securely in the browser's localStorage and are never sent to the server.
+
+## How It Works
+
+1. User enters a description of the website they want to build
+2. Gemini 2.0 Flash generates HTML, CSS, and JavaScript code
+3. Generated code is displayed in a syntax-highlighted editor
+4. User can deploy to Vercel with one click
+5. Live preview appears in an iframe once deployed
+
+## Project Structure
+
+```
+pludo-coder/
+├── app/
+│   ├── page.tsx                    # Landing page
+│   ├── generation/
+│   │   └── page.tsx               # Code generation & preview page
+│   └── api/
+│       ├── generate-code/         # Gemini AI code generation
+│       └── deploy-vercel/         # Vercel deployment
+├── components/
+│   └── ApiKeyManager.tsx          # API key configuration UI
+└── config/
+    └── app.config.ts              # Application configuration
+```
+
+## Technologies
+
+- **Frontend**: Next.js 15, React 19, TailwindCSS, Framer Motion
+- **AI**: Google Generative AI (Gemini 2.0 Flash)
+- **Deployment**: Vercel Deployment API
+- **Syntax Highlighting**: React Syntax Highlighter
+
+## Build for Production
+
+```bash
+npm run build
+npm start
+```
 
 ## License
 

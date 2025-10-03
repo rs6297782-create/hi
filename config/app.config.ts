@@ -28,52 +28,26 @@ export const appConfig = {
     runtime: 'node22' // Available: node22, python3.13, v0-next-shadcn, cua-ubuntu-xfce
   },
 
-  // E2B Sandbox Configuration
-  e2b: {
-    // Sandbox timeout in minutes
-    timeoutMinutes: 30,
-
-    // Convert to milliseconds for E2B API
-    get timeoutMs() {
-      return this.timeoutMinutes * 60 * 1000;
-    },
-
-    // Development server port (E2B uses 5173 for Vite)
-    vitePort: 5173,
-
-    // Time to wait for Vite dev server to be ready (in milliseconds)
-    viteStartupDelay: 10000,
-
-    // Working directory in sandbox
-    workingDirectory: '/home/user/app',
-  },
-  
   // AI Model Configuration
   ai: {
     // Default AI model
-    defaultModel: 'moonshotai/kimi-k2-instruct-0905',
-    
+    defaultModel: 'google/gemini-2.0-flash-exp',
+
     // Available models
     availableModels: [
-      'openai/gpt-5',
-      'moonshotai/kimi-k2-instruct-0905',
-      'anthropic/claude-sonnet-4-20250514',
       'google/gemini-2.0-flash-exp'
     ],
-    
+
     // Model display names
     modelDisplayNames: {
-      'openai/gpt-5': 'GPT-5',
-      'moonshotai/kimi-k2-instruct-0905': 'Kimi K2 (Groq)',
-      'anthropic/claude-sonnet-4-20250514': 'Sonnet 4',
-      'google/gemini-2.0-flash-exp': 'Gemini 2.0 Flash (Experimental)'
+      'google/gemini-2.0-flash-exp': 'Gemini 2.0 Flash'
     } as Record<string, string>,
-    
+
     // Model API configuration
     modelApiConfig: {
-      'moonshotai/kimi-k2-instruct-0905': {
-        provider: 'groq',
-        model: 'moonshotai/kimi-k2-instruct-0905'
+      'google/gemini-2.0-flash-exp': {
+        provider: 'google',
+        model: 'gemini-2.0-flash-exp'
       }
     },
     
